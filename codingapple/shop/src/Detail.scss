@@ -16,7 +16,7 @@ $메인칼라 : black;
 }
 
 @mixin 함수() {
-    background : #eeeeee;
+    background : #5a5a5a;
     padding : 20px;
     border-radius : 5px;
     max-width: 500px;
@@ -29,7 +29,19 @@ $메인칼라 : black;
 }
 .my-alert2 {
     @extend .my-alert;
-    background : #ffe591;
+    background : #363636;
+    color:#ffffff;
+    margin-top:20px;
+    height: 80px;
+}
+.my-alert-text {
+    padding-top: 7px;
+}
+
+.my-alert3 {
+    @extend .my-alert;
+    background : #acacac;
+    color:#ffffff;
 }
 
 

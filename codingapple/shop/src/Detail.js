@@ -42,7 +42,7 @@ function Detail(props){
     return (
     <div className="container">
       <박스>
-        <제목 className="red" 색상="blue" >Detail</제목>
+        <제목 className="red" 색상="#363636" >Detail</제목>
       </박스>
 
       {inputData}
@@ -51,7 +51,7 @@ function Detail(props){
       {
         alert === true
         ? (<div className='my-alert2'>
-            <p>재고가 얼마 남지 않았습니다.</p>
+            <p className='my-alert-text'>재고가 얼마 남지 않았습니다.</p>
           </div>)
         : null
       }
@@ -76,7 +76,7 @@ function Detail(props){
             props.dispatch({type : '항목추가', payload : {id:foundProd.id, name:foundProd.title, quan:1}});
             history.push('/cart');
             } }>주문하기</button> 
-
+          &nbsp;
           <button className="btn btn-danger" onClick={()=>{
               history.goBack();
           }}>뒤로가기</button> 

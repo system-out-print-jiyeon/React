@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import { connect, useDispatch, useSelector } from 'react-redux';
 
 
@@ -28,11 +28,12 @@ function Cart(props){
                                     <td>{ a.name }</td>
                                     <td>{ a.quan }</td>
                                     <td>
-                                        <button onClick={() => { dispatch({type : '수량증가', 데이터 : a.id}) }}>+</button>
+                                        <Button variant="dark" onClick={() => { dispatch({type : '수량증가', 데이터 : a.id}) }}>+</Button>
+                                        &nbsp;
                                         {
                                             a.quan <= 1
-                                            ? <button disabled >-</button>
-                                            : <button onClick={() => { dispatch({type : '수량감소', 데이터 : a.id}) }}>-</button>
+                                            ? <Button variant="dark" disabled>-</Button>
+                                            : <Button variant="dark" onClick={() => { dispatch({type : '수량감소', 데이터 : a.id}) }}>-</Button>
                                         }
                                     </td>
                                 </tr>
@@ -43,10 +44,10 @@ function Cart(props){
                 </tbody>
             </Table>
             {
-                props.alert열렸니 === true
-                ? ( <div className="my-alert2">
-                        <p>지금 구매하시면 신규할인 20%</p>
-                        <button onClick={() => {dispatch({type: '닫기'})}}>닫기</button>
+                state.reducer2 === true
+                ? ( <div className="my-alert3">
+                        <b>🎉 지금 구매하시면 신규할인 20% 🎉</b> <br/><br/>
+                        <Button variant="light" onClick={() => {dispatch({type: '닫기'})}}>닫기</Button>
                     </div>)
                 : null
             }
