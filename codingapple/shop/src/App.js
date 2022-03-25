@@ -11,19 +11,21 @@ import axios from 'axios';
 import {Link, Route, Switch} from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
+/* 같은 변수값을 공유할 범위 생성 , detail에서도 쓸거니까 export해야됨*/
 export let 재고context = React.createContext();
+console.log(재고context);
 
 
 function App() {
 
-  let [shoes, shoes변경] = useState(Data);
+  let [prod, prod변경] = useState(Data);
   let [재고, 재고변경] = useState([10, 11, 12]);
 
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="/">ShoeShop</Navbar.Brand>
+          <Navbar.Brand href="/">Apple store</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -43,12 +45,12 @@ function App() {
 
       
 
-      <Switch>  {/* 여러개 맞아도 하나만 보여줌. 중복매칭 허용X, 중복발생하면 그중 맨위에것만 */}
+      <Switch>  {/* 여러개 맞아도 하나만 보여줌. 중복매칭 허용X, 중복발생하면 그중 맨위에것만,  v6에서는 <Routes>, <Route>*/}
         <Route exact path="/">
           <div className='background'>
-            <h1>Hello, world!</h1>
-            <p>
-              This is simple 어쩌구 ~~~~
+            <h1 className='title'>Apple Store</h1>
+            <p className='title'>
+              스토어. 좋아하는 Apple 제품을 구입하는 가장 좋은 방법.
             </p>
             <p>
               <Button variant="primary">Primary</Button>{' '}
@@ -56,12 +58,13 @@ function App() {
           </div>
           <div className="container">
             
+            {/* 같은 값을 공유할 html을 범위로 싸맴 , Card에서 props전송없이 재고라는 state사용가능*/}
             <재고context.Provider value={재고}>
 
               <div className="row">
                 {
-                  shoes.map((a,i)=>{
-                    return <Card shoes={shoes[i]} i={i} key={i}/>
+                  prod.map((a,i)=>{
+                    return <Card prod={prod[i]} i={i} key={i}/>
                   })
                 }
               </div>
@@ -71,10 +74,10 @@ function App() {
 
               /* 로딩중이라는 UI 띄움 */
 
-              axios.get('https://codingapple1.github.io/shop/data2.json')
+              axios.get('https://system-out-print-jiyeon.github.io/data2.json')
               .then((result)=>{
                 /* 로딩중이라는 UI 안보이게 처리 */
-                shoes변경([...shoes, ...result.data]);
+                prod변경([...prod, ...result.data]);
               })
               .catch(()=>{
                 console.log("실패했어용");
@@ -84,8 +87,9 @@ function App() {
           </div>
         </Route>
         <Route path="/detail/:id">
+          {/* detail에도 재고state 공유 */}
           <재고context.Provider value={재고}>
-            <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
+            <Detail prod={prod} 재고={재고} 재고변경={재고변경}/>
           </재고context.Provider>
         </Route>
 
@@ -99,8 +103,6 @@ function App() {
 
       </Switch>
 
-
-
     </div>
   );
 }
@@ -111,15 +113,16 @@ function App() {
 
 
 function Card(props){
-
+  /* 범위에 공유된 값 사용하기 */
   let 재고 = useContext(재고context);
   let history = useHistory();
 
   return (
-    <div className="col-md-4" onClick={() => {history.push('/detail/' + props.shoes.id)}}>
-      <img src={"https://codingapple1.github.io/shop/shoes" + (props.i+1) + ".jpg"} width="100%" />
-      <h4>{ props.shoes.title }</h4>
-      <p>{ props.shoes.content }</p> & <p>{ props.shoes.price }</p>
+    <div className="col-md-4" onClick={() => {history.push('/detail/' + props.prod.id, (props.i+1))}}>
+      <img src={"https://system-out-print-jiyeon.github.io/prod" + (props.i+1) + ".jpg"} width="100%" />
+      <h4>{ props.prod.title }</h4>
+      <p>{ props.prod.content }</p> & <p>{ props.prod.price }</p>
+      {/* 만약 또 컴포넌트안에 넣어야된다면 */}
       <Test></Test>
       
     </div>

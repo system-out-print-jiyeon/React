@@ -22,10 +22,10 @@ function Detail(props){
     let { id } = useParams();
     let [누른탭, 누른탭변경] = useState(0);
     let [스위치, 스위치변경] = useState(false);
-    let foundProd = props.shoes.find(function(prod){
-        return prod.id == id; 
+    let foundProd = props.prod.find(function(prodct){
+        return prodct.id == id; 
     })
-    /* let foundProd = props.shoes.find(x => x.id == id); */
+    /* let foundProd = props.prod.find(x => x.id == id); */
     let history = useHistory();
 
     let 재고 = useContext(재고context);
@@ -60,7 +60,7 @@ function Detail(props){
 
       <div className="row">
         <div className="col-md-6">
-          <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+          <img src="https://system-out-print-jiyeon.github.io/prod1.jpg" width="100%" />
         </div>
         <div className="col-md-6 mt-4">
           <h4 className="pt-5">{foundProd.title}</h4>
@@ -74,6 +74,7 @@ function Detail(props){
             
             props.재고변경([9, 11, 12])
             props.dispatch({type : '항목추가', payload : {id:foundProd.id, name:foundProd.title, quan:1}});
+            /* 개발환경에서 새로고침하면 redux도 초기화된다. 개발환경에서 페이지이동시 강제새로고침 안되게하려면 useHistory()훅 사용 */
             history.push('/cart');
             } }>주문하기</button> 
           &nbsp;

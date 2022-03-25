@@ -7,20 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 
-let alert초기값 = true;
+let 초기값 = [];
 
-function reducer2(state=alert초기값, 액션){
-  if(액션.type === '닫기'){
-    state = false;
-    return state;
-  }else {
-    return state;
-  }
-}
-
-let 초기값 = [
-];
-
+/* reducer는 수정된 state를 뱉는 함수 */
 function reducer(state=초기값, 액션){
   let copy = [...state];
   /* if(액션.type === '항목추가'){
@@ -60,13 +49,25 @@ function reducer(state=초기값, 액션){
   }
 }
 
+let alert초기값 = true;
+
+function reducer2(state=alert초기값, 액션){
+  if(액션.type === '닫기'){
+    state = false;
+    return state;
+  }else {
+    return state;
+  }
+}
+
+/* combineReducers : reducer 여러개 합치는 문법 */
 let store = createStore(combineReducers({reducer, reducer2}));
 
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
+      <Provider store={store}> {/* provider로 감싸진 애들은 props없이도 state공유 가능 */}
         <App /> 
       </Provider>
     </BrowserRouter>
