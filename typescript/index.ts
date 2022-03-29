@@ -63,6 +63,23 @@ number + 1 (허용)
 string|number + 1 (안됨) 
 */
 
+function 함수에타입지정하는법(x :number) :number{   // 함수는 파라미터, return값 타입 지정가능
+    return x*2;
+}
+
+함수에타입지정하는법(30);
+
+/* ?연산자 == '| undefined'와 같음, 파라미터가 옵션일 경우에 사용
+   (x? :number) == (x :number|undefined)    */
+
+function 유니온내로잉(x :number|string) :void{
+    if(typeof x === 'number'){
+        x + 1
+    } else{
+        x + 'y'
+    }
+}
+
 
 
 
