@@ -1,0 +1,13 @@
+.App {
+  background: rgb(138, 192, 206);
+  text-align: center;
+  height: 100vh;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: white;
+  background-position: center;
+}
