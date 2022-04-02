@@ -2,26 +2,39 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Home from './components/Home';
+import Timer from './components/Timer';
+import Footer from './components/Footer';
+import Start from './components/Start';
 
 function App() {
   return (
-    <Router>
-      <Header/>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
-        <h3>가보자 가보자</h3>
+        <Header />
+        <Routes>
+          <Route path="/">
+            <Home />
+          </Route>
+
+          <Route path="/start/:input">
+            <Start />
+          </Route>
+
+          <Route path="/:input">
+            <Home />
+          </Route>
+
+          <Route path="*">
+            <p>im not found</p>
+          </Route>
+        </Routes>
+        <Footer />
       </div>
     </Router>
   );
 }
 
-
-function Header() {
-
-  return (
-    <div className="header">
-        <h3>GABOZAGO</h3>
-    </div>
-  );
-}
 
 export default App;
