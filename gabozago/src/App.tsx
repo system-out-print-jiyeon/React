@@ -4,35 +4,31 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
-import Timer from './components/Timer';
 import Footer from './components/Footer';
 import Start from './components/Start';
 
-function App() {
+const App = () => {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/">
-            <Home />
-          </Route>
+    <>
+      <Router>
+        <div className="App">
 
-          <Route path="/start/:input">
-            <Start />
-          </Route>
+          <Header />
 
-          <Route path="/:input">
-            <Home />
-          </Route>
+          <Routes>
+            <Route element={<Home/>} path="/"></Route>
 
-          <Route path="*">
-            <p>im not found</p>
-          </Route>
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+            <Route element={<Start/>} path="/start/:input"></Route>
+
+            <Route element={<Home/>} path="/:input"></Route>
+
+          </Routes>
+
+          <Footer />
+
+        </div>
+      </Router>
+    </>
   );
 }
 

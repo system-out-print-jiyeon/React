@@ -1,9 +1,12 @@
 import React from 'react';
+import './Home.css';
+import Timer from './Timer';
 
 function Home(){
     return (
         <div className="home">
-            해윙
+            <span>Home</span>
+            <Timer/>
         </div>
     );
 }
