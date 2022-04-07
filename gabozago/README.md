@@ -19,6 +19,7 @@ yarn add @types/react-router-dom
 
 // moment
 yarn add moment
+yarn add moment react-moment
 
 // gh-pages
 yarn add gh-pages
