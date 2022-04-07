@@ -24,7 +24,6 @@ yarn add moment react-moment
 // gh-pages
 yarn add gh-pages
 
-
-// react-simple-timefield
-npm install --save react-simple-timefield
+// bootstrap
+npm install react-bootstrap bootstrap
 
