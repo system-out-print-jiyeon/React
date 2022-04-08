@@ -1,29 +1,25 @@
-import React, { useCallback } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
+import moment from 'moment';
 import './Home.css';
 import Timer from './Timer';
-import { useState } from 'react';
 
-function Home(){
+export interface IProps {
+    inputTime: string
+    leftTime: string
+}
 
-    const [inputTime, setInputTime] = useState<string>('');
-    const onInputTime = useCallback((e:any) => {
-        setInputTime(e.target.value);
-    },[]);
+const Home: FC<IProps> = ({
+    inputTime,
+    leftTime
+}:IProps) => {
+
     
 
+    
 
     return (
         <div>
-            {/* 나중에 라우터로 분리하기 */}
-            <div className='timeInput'>
-                <div className="home">
-                    <span>퇴근시간을 입력하세요</span>
-                    <input  type='time'
-                            value={inputTime}
-                            onChange={onInputTime}/>
-                </div>
-            </div>
-            <Timer inputTime={inputTime}/>
+            <Timer inputTime={inputTime} leftTime={leftTime}/>
         </div>
     );
 }

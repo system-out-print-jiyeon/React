@@ -7352,7 +7352,7 @@
     "regenerator-runtime" "^0.13.9"
     "whatwg-fetch" "^3.6.2"
 
-"react-bootstrap@^2.2.3", "react-bootstrap@>=1.0.0-alpha":
+"react-bootstrap@^2.2.3":
   "integrity" "sha512-gXsAEBdDUHnOpJ2C+DDQ4mFt7tN6u6qWnTH3tqiE9jUvV6gGY8uHFp0iGBsM+yjrBwmR6bqCBFh8Z82aQj1LSw=="
   "resolved" "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-2.2.3.tgz"
   "version" "2.2.3"
@@ -8518,11 +8518,6 @@
 "thunky@^1.0.2":
   "integrity" "sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA=="
   "resolved" "https://registry.npmjs.org/thunky/-/thunky-1.1.0.tgz"
-  "version" "1.1.0"
-
-"time-number@^1.1.0":
-  "integrity" "sha1-k6ABk6Lk+EG/uodROYf02+PAmk4="
-  "resolved" "https://registry.npmjs.org/time-number/-/time-number-1.1.0.tgz"
   "version" "1.1.0"
 
 "tmpl@1.0.5":

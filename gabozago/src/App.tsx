@@ -16,11 +16,9 @@ const App = () => {
           <Header />
 
           <Routes>
-            <Route element={<Home/>} path="/"></Route>
+            <Route element={<Home inputTime={''} leftTime={''}/>} path="/home"></Route>
 
-            <Route element={<Start/>} path="/start/:input"></Route>
-
-            <Route element={<Home/>} path="/:input"></Route>
+            <Route element={<Start/>} path="/start"></Route>
 
           </Routes>
 
