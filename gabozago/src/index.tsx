@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 /* 리듀서 생성 */
 function calculateReducer(state: any){
+  console.log("state : " + state);
   return state;
 }
 

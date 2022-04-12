@@ -9,10 +9,6 @@ export interface IProps {
     leftTime: string
 }
 
- /* state꺼내쓰기 : let 변수 = useSelector(콜백함수) */
-let state = useSelector((state) => state);  /* state : redux에 있던 모든 state */
-/* dispatch하는 더 쉬운 방법 : useDispatch() */
-let dispatch = useDispatch();
 
 const Timer: FC<IProps> = ({
     inputTime,
