@@ -15,3 +15,11 @@
 .header {
   text-align: center;
 }
+
+.invalid {
+  padding-top: 200px;
+}
+
+.linktag {
+  color: white;
+}

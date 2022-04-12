@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -8,6 +8,9 @@ import Footer from './components/Footer';
 import Start from './components/Start';
 
 const App = () => {
+
+  
+
   return (
     <>
       <Router>
@@ -15,12 +18,25 @@ const App = () => {
 
           <Header />
 
-          <Routes>
-            <Route element={<Home inputTime={''} leftTime={''}/>} path="/home"></Route>
+            <Switch>
 
-            <Route element={<Start/>} path="/start"></Route>
+              <Route path="/start">
+                <Start/>
+              </Route>
 
-          </Routes>
+              <Route path="/home">
+                <Home/>  
+              </Route>
+
+              <Route path="/:invalidUrl">
+                <div className='invalid'>
+                    잘못 된 주소입니다
+                    <br/><br/>
+                    <Link to='/start' className='linktag'> Go Back </Link>
+                </div>
+              </Route>
+
+            </Switch>
 
           <Footer />
 
