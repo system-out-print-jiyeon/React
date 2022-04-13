@@ -13,33 +13,32 @@ const Timer = () => {
     const second = useSelector((state: {hour: string; minute: string; second: string;}) => state.second);
 
 
-    const [hours, setHours] = useState<any>(hour);
-    const [minutes, setMinutes] = useState<any>(minute);
-    const [seconds, setSeconds] = useState<any>(second);
+    const [hours, setHours] = useState<any>(parseInt(hour));
+    const [minutes, setMinutes] = useState<any>(parseInt(minute));
+    const [seconds, setSeconds] = useState<any>(parseInt(second));
 
     useEffect(() => {
         const countdown = setInterval(() => {
 
-          if (parseInt(seconds) > 0) {
-            setSeconds(parseInt(seconds) - 1);
+          if (seconds > 0) {
+            setSeconds(seconds - 1);
           }
 
-          if (parseInt(seconds) === 0) {
-            if (parseInt(minutes) === 0) {
+          if (seconds === 0) {
+            if (minutes === 0) {
                 clearInterval(countdown);
             } else {
-              setMinutes(parseInt(minutes) - 1);
+              setMinutes(minutes - 1);
               setSeconds(59);
             }
           }
-          
 
-          if (parseInt(seconds) === 0) {
-            if (parseInt(minutes) === 0) {
-              if (parseInt(hours) === 0) {
+          if (seconds === 0) {
+            if (minutes === 0) {
+              if (hours === 0) {
                   clearInterval(countdown);
               } else {
-                setHours(parseInt(hours) - 1);
+                setHours(hours - 1);
                 setMinutes(59);
                 setSeconds(59);
               }
@@ -53,7 +52,7 @@ const Timer = () => {
 
     return (
         <div className="timer">
-            <h1>{hours == 0 ? `0${hours}` : hours}:{minutes == 0 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
+            <h1>{hours < 10 ? `0${hours}` : hours}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
         </div>
     );
 }

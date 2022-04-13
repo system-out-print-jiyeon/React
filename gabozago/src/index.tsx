@@ -7,21 +7,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import moment from 'moment';
 
-
-interface timerInter {
-  hour: string;
-  minute: string;
-  second: string;
-}
-
 const timerState = {
+  inputTime: '',
   hour: '',
   minute: '',
   second: ''
 }
 
+const modalState = {modal : true};
+
 /* 리듀서 생성 */
-export default function inputReducer(state = timerState, action: { type: string; payload: string; }){
+function inputReducer(state = timerState, action: { type: string; payload: string; }){
 
   if(action.type == 'tossInputTime'){
     const custInputTime = action.payload+":00";
@@ -32,21 +28,25 @@ export default function inputReducer(state = timerState, action: { type: string;
     const diffMinute = moment.duration(t2.diff(t1)).minutes();
     const diffSecond = moment.duration(t2.diff(t1)).seconds();
 
+    state.inputTime = action.payload;
     state.hour = diffHour < 10 ? "0"+diffHour : ""+diffHour;
     state.minute = diffMinute < 10 ? "0"+diffMinute : ""+diffMinute;
     state.second = diffSecond < 10 ? "0"+diffSecond : ""+diffSecond;
 
-    /* state = hour + ":" + minute + ":" + second; */
   }
   return state;
 }
 
-function calculateReducer(state: any){
-  /* console.log("cal state : " + state);
-  return state; */
+function modalReducer(state = modalState, action: {type: string; payload: boolean}){
+  if(action.type == 'modalOpen'){
+    state.modal = action.payload;
+  }else{
+    state.modal = action.payload;
+  }
+  return state;
 }
 
-const store = createStore(inputReducer);
+const store = createStore(combineReducers({inputReducer, modalReducer}));
 
 ReactDOM.render(
   <React.StrictMode>

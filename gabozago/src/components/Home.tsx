@@ -1,12 +1,12 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
-import moment from 'moment';
 import './Home.css';
 import Timer from './Timer';
+import { useSelector } from 'react-redux';
 
 
 function Home(){
     
-    const [inputTime, setInpuTime] = useState<string>('');
+    const inputTime = useSelector((state: {inputTime: string}) => state.inputTime);
+
 
 
     return (
