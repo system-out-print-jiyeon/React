@@ -9,8 +9,6 @@ import Start from './components/Start';
 
 const App = () => {
 
-  
-
   return (
     <>
       <Router>
@@ -20,19 +18,18 @@ const App = () => {
 
             <Switch>
 
-              <Route path="/start">
+              <Route exact path="/">
                 <Start/>
               </Route>
 
-              <Route path="/home">
-                <Home/>  
+              <Route path="/home" exact component={Home}>
               </Route>
 
               <Route path="/:invalidUrl">
                 <div className='invalid'>
                     잘못 된 주소입니다
                     <br/><br/>
-                    <Link to='/start' className='linktag'> Go Back </Link>
+                    <Link to='/' className='linktag'> Go Back </Link>
                 </div>
               </Route>
 

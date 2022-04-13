@@ -9,8 +9,9 @@ import './Start.css';
 function Start(){
     
     const history = useHistory();
-
+    const dispatch = useDispatch();
     const [inputTime, setInputTime] = useState<string>('');
+    
     
 
     const onInputTime = useCallback((e:any) => {
@@ -18,6 +19,7 @@ function Start(){
     },[inputTime]);
 
     const navigateBtn = () => {
+        dispatch({type : 'tossInputTime', payload : inputTime})
         history.push("/home");
     }
 
