@@ -1,17 +1,17 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
-import Moment from 'react-moment';
-import moment from 'moment';
-import { useStore, useDispatch, useSelector } from 'react-redux';
-
-
-
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../modules/reducers';
+import { useHistory } from "react-router-dom";
+import './Timer.css';
 
 const Timer = () => {
 
-    const hour = useSelector((state: {hour: string; minute: string; second: string;}) => state.hour);
-    const minute = useSelector((state: {hour: string; minute: string; second: string;}) => state.minute);
-    const second = useSelector((state: {hour: string; minute: string; second: string;}) => state.second);
-
+    const history = useHistory();
+    const state = useSelector((state:RootState) => state);
+    
+    const hour = state.inputReducer.hour;
+    const minute = state.inputReducer.minute;
+    const second = state.inputReducer.second;
 
     const [hours, setHours] = useState<any>(parseInt(hour));
     const [minutes, setMinutes] = useState<any>(parseInt(minute));
@@ -19,7 +19,6 @@ const Timer = () => {
 
     useEffect(() => {
         const countdown = setInterval(() => {
-
           if (seconds > 0) {
             setSeconds(seconds - 1);
           }
@@ -37,6 +36,7 @@ const Timer = () => {
             if (minutes === 0) {
               if (hours === 0) {
                   clearInterval(countdown);
+                  history.push("/timetogo");
               } else {
                 setHours(hours - 1);
                 setMinutes(59);
@@ -48,7 +48,6 @@ const Timer = () => {
         }, 1000);
         return () => clearInterval(countdown);
       }, [hours, minutes, seconds]);
-
 
     return (
         <div className="timer">

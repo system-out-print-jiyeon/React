@@ -1,28 +1,41 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import './Footer.css';
-import { useStore, useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import './Footer.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import Toast from './common/Toast';
+import { RootState } from '../modules/reducers';
 
 function Footer(){
 
     const dispatch = useDispatch();
-    const [modalOpen, setModalOpen] = useState(false);
+    const toastState = useSelector((state:RootState) => state.toastReducer);
+    const [isShow, setIsShow] = useState(false);
     
-    
-      const closeModal = () => {
-        setModalOpen(false);
-      };
 
+    const closeToast = () =>{
+      setIsShow(false);
+  }
     
     const copyUrl = () => {
-        navigator.clipboard.writeText("hihi");
-        setModalOpen(true);
-        dispatch({type : 'modalOpen', payload : modalOpen});
+        navigator.clipboard.writeText("https://system-out-print-jiyeon.github.io/gabozago/");
+        setIsShow(true);
     }
 
     return (
         <div className="footer">
-            <p>footer</p>
-            <button onClick={copyUrl}>Copy Text</button>
+            <a onClick={copyUrl} className='linktag'> @jiyeon.zip </a>
+
+            {
+                isShow === true
+                ?(
+                    <div>
+                        <Toast theme={toastState.theme} toast={isShow} closeToast={closeToast} textAlign={toastState.textAlign}>
+                        🔗 링크를 <strong>복사</strong>했습니다
+                        </Toast>
+                    </div>
+                    )
+                : null
+            }
+
         </div>
     );
 

@@ -1,11 +1,11 @@
-
-import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Start from './components/Start';
+import TimeToGo from './components/TimeToGo';
+import About from './components/About';
 
 const App = () => {
 
@@ -18,12 +18,10 @@ const App = () => {
 
             <Switch>
 
-              <Route exact path="/">
-                <Start/>
-              </Route>
-
-              <Route path="/home" exact component={Home}>
-              </Route>
+              <Route exact path="/" component={Start}></Route>
+              <Route path="/home" exact component={Home}></Route>
+              <Route path="/timetogo" exact component={TimeToGo}></Route>
+              <Route path="/about" exact component={About}></Route>
 
               <Route path="/:invalidUrl">
                 <div className='invalid'>

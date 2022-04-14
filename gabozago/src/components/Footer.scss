@@ -1,5 +1,5 @@
 .footer {
-    display: flex;
+    display:flex;
     justify-content: center;
     align-items: center;
     height: 60px;
@@ -7,4 +7,10 @@
   
     justify-content: space-between;
     padding: 0 10px;
+  }
+
+  .linktag {
+    color: white;
+    text-decoration: none;
+    text-align: right;
   }
