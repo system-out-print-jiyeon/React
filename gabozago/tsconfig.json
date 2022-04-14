@@ -23,9 +23,10 @@
     "baseUrl": ".",
     "paths": {
       "src/*": ["src/*"]
-    },
+    }
   },
   "include": [
     "src/**/*"
-  ]
+  ],
+  "homepage": "https://system-out-print-jiyeon.github.io/gabozago"
 }
