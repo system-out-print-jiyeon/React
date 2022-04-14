@@ -31,7 +31,8 @@
     "styled-components": "^5.3.5",
     "typesafe-actions": "^5.1.0",
     "typescript": "^4.6.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "homepage": "https://system-out-print-jiyeon.github.io/gabozago/"
   },
   "scripts": {
     "start": "react-scripts start",
