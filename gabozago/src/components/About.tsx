@@ -10,8 +10,7 @@ function About(){
             ✔ moment.js 와 setInterval 으로 시간 계산 구현<br/>
             ✔ Toast 창 띄우기<br/>
             ✔ Link copy<br/>
-            ✔ Router 잘못된 URL입력시 이동<br/>
-
+            ✔ Router exact, :parameter 로 올바른 URL과 잘못 된 URL 구분<br/>
             <br/>
         </div>
     );

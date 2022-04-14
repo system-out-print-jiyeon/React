@@ -1,5 +1,5 @@
 import './Header.css';
-import {Button, Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
+import {Navbar, Container, Nav} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 function Header(){
@@ -13,6 +13,7 @@ function Header(){
                     <Nav className="me-auto">
                     <Nav.Link as={Link} to="/">Start</Nav.Link>
                     <Nav.Link as={Link} to="/about">About</Nav.Link>
+                    <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 </Container>

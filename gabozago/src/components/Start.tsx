@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from "react-router-dom"; // v6부터는 useHistory 안씀, useNavigate 씀
+import { useHistory } from "react-router-dom"; // v6은 useNavigate 
 import { Button } from 'react-bootstrap';
 import './Start.css';
 import Toast from './common/Toast';
@@ -21,7 +21,7 @@ function Start(){
     const navigateBtn = () => {
         if(inputTime){
             dispatch({type : 'tossInputTime', payload : inputTime})
-            history.push("/home");
+            history.push("/home/" + inputTime );
         }else{
             setIsShow(true);
         }

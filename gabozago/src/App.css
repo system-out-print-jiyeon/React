@@ -10,6 +10,7 @@
 
   color: white;
   background-position: center;
+  margin: 0px;
 }
 
 .header {
@@ -22,4 +23,9 @@
 
 .linktag {
   color: white;
+}
+
+.linkIco {
+  font-size: 30px;
+  text-decoration: none;
 }

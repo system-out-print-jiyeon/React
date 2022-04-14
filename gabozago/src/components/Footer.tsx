@@ -22,7 +22,7 @@ function Footer(){
 
     return (
         <div className="footer">
-            <a onClick={copyUrl} className='linktag'> @jiyeon.zip </a>
+            <a onClick={copyUrl} className='linktag'> 🔗 Copy Link </a>
 
             {
                 isShow === true
